@@ -16,10 +16,8 @@ public class GradesController {
 
     @PostMapping("/register")
     public StudentInfo register(@RequestBody StudentInfo studentinfo, @RequestBody StudentRatings studentrating) {
-        // Insert data into the database
         registrationRepo.insert(studentinfo, studentrating);
 
-        // Update the comment based on the average grade
         if (studentinfo.getAverageGrade() >= 85) {
             studentinfo.setComment("Within the maintaining average");
         } else {
